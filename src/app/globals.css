@@ -141,4 +141,40 @@
       text-shadow: none;
     }
   }
+
+  /* ------------------------------------------------------------------ *
+   * Ambient CRT glitch for the idle-desktop wordmark.
+   * Mostly idle; a brief tear/jitter burst near the end of each cycle.
+   * Green-only (respects the phosphor palette) and reduced-motion safe.
+   * ------------------------------------------------------------------ */
+  @keyframes wordmark-jitter {
+    0%, 90%, 100% { transform: translate3d(0, 0, 0); }
+    92% { transform: translate3d(-1px, 1px, 0); }
+    94% { transform: translate3d(1px, -1px, 0); }
+    96% { transform: translate3d(-1px, 0, 0); }
+    98% { transform: translate3d(1px, 1px, 0); }
+  }
+  @keyframes wordmark-slice-a {
+    0%, 89%, 100% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate3d(0, 0, 0); }
+    90% { opacity: .85; clip-path: inset(8% 0 80% 0);  transform: translate3d(-4px, 0, 0); }
+    93% { opacity: .85; clip-path: inset(46% 0 42% 0); transform: translate3d(4px, 0, 0); }
+    96% { opacity: .7;  clip-path: inset(70% 0 14% 0); transform: translate3d(-3px, 0, 0); }
+  }
+  @keyframes wordmark-slice-b {
+    0%, 89%, 100% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate3d(0, 0, 0); }
+    91% { opacity: .6; clip-path: inset(24% 0 60% 0); transform: translate3d(4px, 0, 0); }
+    95% { opacity: .6; clip-path: inset(60% 0 26% 0); transform: translate3d(-4px, 0, 0); }
+    98% { opacity: .5; clip-path: inset(34% 0 52% 0); transform: translate3d(3px, 0, 0); }
+  }
+  .wordmark-jitter { animation: wordmark-jitter 6.5s steps(1, end) infinite; }
+  .wordmark-slice-a { animation: wordmark-slice-a 6.5s steps(1, end) infinite; }
+  .wordmark-slice-b { animation: wordmark-slice-b 6.5s steps(1, end) infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wordmark-jitter,
+    .wordmark-slice-a,
+    .wordmark-slice-b {
+      animation: none;
+    }
+  }
 }
