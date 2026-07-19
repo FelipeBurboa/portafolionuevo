@@ -1,26 +1,144 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
+/* ------------------------------------------------------------------ *
+ * FelipeOS terminal theme tokens
+ *
+ * One palette: near-black with a green cast, a single phosphor-green
+ * primary, amber reserved strictly for warnings/highlights, and
+ * warm-desaturated greenish grays. No gradients, no glassmorphism.
+ * ------------------------------------------------------------------ */
 @theme inline {
+  /* Terminal palette → Tailwind utilities (bg-term-bg, text-term-green, …) */
+  --color-term-bg: var(--term-bg);
+  --color-term-bg-raised: var(--term-bg-raised);
+  --color-term-bg-window: var(--term-bg-window);
+  --color-term-bg-titlebar: var(--term-bg-titlebar);
+  --color-term-border: var(--term-border);
+  --color-term-border-dim: var(--term-border-dim);
+  --color-term-green: var(--term-green);
+  --color-term-green-bright: var(--term-green-bright);
+  --color-term-fg: var(--term-fg);
+  --color-term-fg-dim: var(--term-fg-dim);
+  --color-term-fg-bright: var(--term-fg-bright);
+  --color-term-amber: var(--term-amber);
+  --color-term-amber-bright: var(--term-amber-bright);
+
+  /* Fonts */
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-sans: var(--font-plex-mono), ui-monospace, monospace;
+  --font-pixel: var(--font-vt323), var(--font-plex-mono), monospace;
+
+  /* shadcn semantic tokens (mapped onto the terminal palette below) */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Terminal UI is crisp — near-square corners */
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) * 1.5);
+  --radius-xl: calc(var(--radius) * 2);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Raw terminal palette */
+  --term-bg: #0b0f0c;
+  --term-bg-raised: #0e1410;
+  --term-bg-window: #0d120e;
+  --term-bg-titlebar: #121a13;
+  --term-border: #2c3f2e;
+  --term-border-dim: #1e2a20;
+  --term-green: #57d364;
+  --term-green-bright: #7cff8a;
+  --term-fg: #9fbf9f;
+  --term-fg-dim: #5a6e5c;
+  --term-fg-bright: #c9e4c9;
+  --term-amber: #d3a557;
+  --term-amber-bright: #f0c674;
+
+  --radius: 0.125rem;
+
+  /* shadcn semantic tokens → terminal palette */
+  --background: var(--term-bg);
+  --foreground: var(--term-fg);
+  --card: var(--term-bg-window);
+  --card-foreground: var(--term-fg-bright);
+  --popover: var(--term-bg-raised);
+  --popover-foreground: var(--term-fg-bright);
+  --primary: var(--term-green);
+  --primary-foreground: var(--term-bg);
+  --secondary: var(--term-bg-titlebar);
+  --secondary-foreground: var(--term-fg-bright);
+  --muted: var(--term-bg-raised);
+  --muted-foreground: var(--term-fg-dim);
+  --accent: var(--term-green);
+  --accent-foreground: var(--term-bg);
+  --destructive: var(--term-amber);
+  --border: var(--term-border);
+  --input: var(--term-border);
+  --ring: var(--term-green);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-mono;
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* faint radial vignette — quiet, non-decorative */
+    background-image: radial-gradient(
+      ellipse at center,
+      transparent 55%,
+      color-mix(in srgb, var(--term-bg) 100%, #000 40%) 100%
+    );
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Phosphor glow for interactive/emphasis text. Use sparingly. */
+  .text-glow {
+    text-shadow: 0 0 6px color-mix(in srgb, currentColor 55%, transparent);
+  }
+
+  /* CRT scanline overlay — opacity kept ≤ 0.05, non-interactive. */
+  .crt-scanlines {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.05) 0 1px,
+      transparent 1px 3px
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .text-glow {
+      text-shadow: none;
+    }
+  }
 }

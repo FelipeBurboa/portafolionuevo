@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "FelipeOS — Felipe Burboa",
+    "description": "El portafolio de Felipe Burboa, presentado como un sistema operativo de terminal en tu navegador."
+  },
+  "desktop": {
+    "start": "inicio",
+    "ready": "listo"
+  },
+  "mobile": {
+    "node": "NODO DE PORTAFOLIO",
+    "appOpen": "APP://ABIERTA",
+    "backToHome": "Volver a la pantalla de inicio",
+    "location": "NODO: CL",
+    "online": "EN LÍNEA"
+  },
+  "projectsUi": {
+    "sampleNotice": "CONTENIDO DE EJEMPLO — reemplaza content/portfolio-demo/en.ts y es.ts con un caso de estudio real.",
+    "indexLabel": "/projects — casos de estudio indexados",
+    "screenshot": "[ MARCADOR DE CAPTURA ]",
+    "role": "ROL",
+    "stack": "STACK",
+    "designNotes": "NOTAS DE DISEÑO",
+    "addUrl": "agregar URL"
+  },
+  "apps": {
+    "intro": "El portafolio de Felipe Burboa como un SO de terminal. Abre una app:",
+    "home": "Inicio de FelipeOS",
+    "projects": {
+      "name": "Proyectos",
+      "desc": "Trabajos seleccionados — stack, rol y enlaces."
+    },
+    "about": {
+      "name": "Acerca de",
+      "desc": "Biografía, trayectoria y currículum."
+    },
+    "contact": {
+      "name": "Contacto",
+      "desc": "Correo, GitHub y LinkedIn."
+    },
+    "terminal": {
+      "name": "Terminal",
+      "desc": "Una terminal interactiva."
+    }
+  },
+  "notFound": {
+    "message": "No existe el archivo o directorio.",
+    "home": "cd ~"
+  }
+}

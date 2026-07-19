@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "FelipeOS — Felipe Burboa",
+    "description": "The portfolio of Felipe Burboa, presented as a terminal operating system in your browser."
+  },
+  "desktop": {
+    "start": "start",
+    "ready": "ready"
+  },
+  "mobile": {
+    "node": "PORTFOLIO NODE",
+    "appOpen": "APP://OPEN",
+    "backToHome": "Return to home screen",
+    "location": "NODE: CL",
+    "online": "ONLINE"
+  },
+  "projectsUi": {
+    "sampleNotice": "SAMPLE CONTENT — replace content/portfolio-demo/en.ts and es.ts with a real case study.",
+    "indexLabel": "/projects — indexed case studies",
+    "screenshot": "[ SCREENSHOT PLACEHOLDER ]",
+    "role": "ROLE",
+    "stack": "STACK",
+    "designNotes": "DESIGN NOTES",
+    "addUrl": "add URL"
+  },
+  "apps": {
+    "intro": "The portfolio of Felipe Burboa as a terminal OS. Open an app:",
+    "home": "FelipeOS home",
+    "projects": {
+      "name": "Projects",
+      "desc": "Selected work — stack, role and links."
+    },
+    "about": {
+      "name": "About",
+      "desc": "Bio, experience timeline and résumé."
+    },
+    "contact": {
+      "name": "Contact",
+      "desc": "Email, GitHub and LinkedIn."
+    },
+    "terminal": {
+      "name": "Terminal",
+      "desc": "An interactive shell."
+    }
+  },
+  "notFound": {
+    "message": "No such file or directory.",
+    "home": "cd ~"
+  }
+}
