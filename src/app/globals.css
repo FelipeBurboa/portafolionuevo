@@ -170,10 +170,18 @@
   .wordmark-slice-a { animation: wordmark-slice-a 6.5s steps(1, end) infinite; }
   .wordmark-slice-b { animation: wordmark-slice-b 6.5s steps(1, end) infinite; }
 
+  /* Phosphor status heartbeat — a hard on/off cursor blink for the widget `▮`. */
+  @keyframes status-blink {
+    0%, 55% { opacity: 1; }
+    56%, 100% { opacity: 0.18; }
+  }
+  .status-blink { animation: status-blink 1.4s steps(1, end) infinite; }
+
   @media (prefers-reduced-motion: reduce) {
     .wordmark-jitter,
     .wordmark-slice-a,
-    .wordmark-slice-b {
+    .wordmark-slice-b,
+    .status-blink {
       animation: none;
     }
   }

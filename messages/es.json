@@ -5,7 +5,14 @@
   },
   "desktop": {
     "start": "inicio",
-    "ready": "listo"
+    "ready": "listo",
+    "greeting": "felipeOS listo — abre Proyectos para comenzar",
+    "uptime": "actividad",
+    "processes": "procesos",
+    "procIdle": "{count} inactivos",
+    "procOpen": "{count} abiertos",
+    "locale": "idioma",
+    "status": "estado"
   },
   "mobile": {
     "node": "NODO DE PORTAFOLIO",

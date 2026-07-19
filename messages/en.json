@@ -5,7 +5,14 @@
   },
   "desktop": {
     "start": "start",
-    "ready": "ready"
+    "ready": "ready",
+    "greeting": "felipeOS ready — open Projects to begin",
+    "uptime": "uptime",
+    "processes": "processes",
+    "procIdle": "{count} idle",
+    "procOpen": "{count} open",
+    "locale": "locale",
+    "status": "status"
   },
   "mobile": {
     "node": "PORTFOLIO NODE",

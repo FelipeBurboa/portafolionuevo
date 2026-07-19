@@ -8,6 +8,7 @@ import { APP_IDS } from "@/lib/window/model";
 import { getApp } from "@/lib/window/registry";
 import { WindowFrame } from "./window-frame";
 import { AmbientDesktop } from "./ambient-desktop";
+import { SystemWidget } from "./system-widget";
 import { LocaleToggle } from "../locale-toggle";
 
 /**
@@ -74,6 +75,9 @@ export function DesktopShell() {
       <main ref={desktopRef} className="relative h-[calc(100dvh-3.75rem)]">
         {/* Ambient backdrop — sits behind the launcher and window layer (negative z). */}
         <AmbientDesktop />
+
+        {/* Ambient system readout — bottom-right, behind the window layer. */}
+        <SystemWidget />
 
         {/* Desktop icons — launch windows */}
         <ul className="relative z-10 flex w-[74px] flex-col gap-6 p-5">
