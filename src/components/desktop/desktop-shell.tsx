@@ -80,9 +80,12 @@ export function DesktopShell() {
         <SystemWidget />
 
         {/* Desktop icons — launch windows */}
-        <ul className="relative z-10 flex w-[74px] flex-col gap-6 p-5">
+        <ul className="relative z-10 flex w-[74px] flex-col gap-7 p-5">
           {APP_IDS.map((id) => {
             const app = getApp(id);
+            // Projects is the primary destination (first for the client audience);
+            // give it a quiet phosphor emphasis without changing the icon footprint.
+            const isPrimary = id === "projects";
             return (
               <li key={id}>
                 <button
@@ -91,11 +94,17 @@ export function DesktopShell() {
                   }}
                   type="button"
                   onClick={() => openFromLauncher(id)}
-                  className="w-full text-center text-[10px] text-term-fg transition-transform duration-150 hover:-translate-y-0.5 hover:text-term-green focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-term-green motion-reduce:transform-none"
+                  className={`w-full text-center text-[10px] transition-transform duration-150 hover:-translate-y-0.5 hover:text-term-green focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-term-green motion-reduce:transform-none ${
+                    isPrimary ? "text-term-fg-bright" : "text-term-fg"
+                  }`}
                 >
                   <span
                     aria-hidden
-                    className="mx-auto mb-1.5 flex h-10 w-10 items-center justify-center border border-term-border bg-term-bg-window text-base text-term-green"
+                    className={`mx-auto mb-1.5 flex h-10 w-10 items-center justify-center border bg-term-bg-window text-base ${
+                      isPrimary
+                        ? "border-term-green text-term-green-bright text-glow"
+                        : "border-term-border text-term-green"
+                    }`}
                   >
                     {app.glyph}
                   </span>
